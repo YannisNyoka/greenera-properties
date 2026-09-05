@@ -4,3 +4,5 @@ res.cookie('token', token, {
   sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict', // <- changed
   maxAge: 7 * 24 * 60 * 60 * 1000,
 });
+
+export default generateToken;
