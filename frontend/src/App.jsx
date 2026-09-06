@@ -16,7 +16,8 @@ import Contact from './pages/Contact';
 import AdminEnquiries from './pages/admin/AdminEnquiries';
 import Agents from './pages/Agents';
 import AgentProfile from './pages/AgentProfile';
-
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +27,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/properties" element={<PropertyListings />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+<Route path="/signup" element={<Signup />} />
           <Route path="/properties/:slug" element={<PropertyDetail />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/agents" element={<Agents />} />

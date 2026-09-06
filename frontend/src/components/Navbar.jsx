@@ -25,7 +25,16 @@ function Navbar() {
         <Link to="/properties" style={{ color: 'white' }}>Properties</Link>
         <Link to="/agents" style={{ color: 'white' }}>Agents</Link>
         <Link to="/contact" style={{ color: 'white' }}>Contact</Link>
-        {user && <Link to="/admin" style={{ color: 'white' }}>Admin</Link>}
+       {user?.role === 'admin' || user?.role === 'editor' ? (
+  <Link to="/admin" style={{ color: 'white' }}>Admin</Link>
+) : user ? (
+  <span style={{ color: 'white', opacity: 0.85 }}>Hi, {user.name}</span>
+) : (
+  <>
+    <Link to="/login" style={{ color: 'white' }}>Login</Link>
+    <Link to="/signup" style={{ color: 'white' }}>Sign Up</Link>
+  </>
+)}
       </div>
 
       {/* Hamburger button — mobile only */}
@@ -67,7 +76,20 @@ function Navbar() {
           <Link to="/properties" style={{ color: 'white' }} onClick={closeMenu}>Properties</Link>
           <Link to="/agents" style={{ color: 'white' }} onClick={closeMenu}>Agents</Link>
           <Link to="/contact" style={{ color: 'white' }} onClick={closeMenu}>Contact</Link>
-          {user && <Link to="/admin" style={{ color: 'white' }} onClick={closeMenu}>Admin</Link>}
+          {user?.role === 'admin' || user?.role === 'editor' ? (
+  <Link to="/admin" style={{ color: 'white' }}>Admin</Link>
+) : user ? (
+  <span style={{ color: 'white', opacity: 0.85 }}>Hi, {user.name}</span>
+) : (
+  <>
+    <Link to="/login" style={{ color: 'white' }} onClick={closeMenu}>
+      Login
+    </Link>
+    <Link to="/signup" style={{ color: 'white' }} onClick={closeMenu}>
+      Sign Up
+    </Link>
+  </>
+)}
         </div>
       )}
     </nav>
