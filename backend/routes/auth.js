@@ -1,6 +1,6 @@
 import express from 'express';
 import rateLimit from 'express-rate-limit';
-import { login, logout, getMe } from '../controllers/authController.js';
+import { login, logout, getMe, register } from '../controllers/authController.js';
 import { protect } from '../middleware/auth.js';
 
 const router = express.Router();
@@ -14,7 +14,16 @@ const loginLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+const registerLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  message: { message: 'Too many signup attempts, please try again later' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 router.post('/login', loginLimiter, login);
+router.post('/register', registerLimiter, register);
 router.post('/logout', logout);
 router.get('/me', protect, getMe);
 

@@ -23,10 +23,10 @@ const userSchema = new mongoose.Schema(
       select: false, // never returned in queries by default — must opt in explicitly
     },
     role: {
-      type: String,
-      enum: ['admin', 'editor'],
-      default: 'editor',
-    },
+  type: String,
+  enum: ['admin', 'editor', 'user'], 
+  default: 'user',                    
+},
     lastLogin: {
       type: Date,
     },
